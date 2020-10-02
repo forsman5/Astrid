@@ -1,0 +1,23 @@
+<!-- header - navbar -->
+{% load static %}
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark navbar-fixed-top">
+  <div class="container-fluid">
+    <ul class="navbar-nav">
+      <!-- TODO: Active -->
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'index' %}">Home</a>
+      </li>
+    </ul>
+    {% if user.is_authenticated %}
+      <p class="navbar-text navbar-right">
+        Hello, <a class="navbar-link" href="{% url 'userPage' user.id %}">{{ user.username }}</a>!
+        <a href="{% url 'logout' %}" type="button" class="btn btn-primary">Sign Out</a>
+      </p>
+    {% else %}
+      <p class="navbar-text navbar-right">
+        <a type="button" class="btn btn-secondary" href="{% url 'login' %}">Log In</a>
+        <a type="button" class="btn btn-secondary" href="{% url 'register' %}">Sign Up</a>
+      </p>
+    {% endif %}
+  </div>
+</nav>
