@@ -25,8 +25,7 @@ SECRET_KEY = 'x*=ytn5l-5n^6f19mi176g6mn9jj)1g!lc#qsh8oo+5e771c+v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS = ["192.168.1.87"]
 
 # Application definition
 
@@ -68,7 +67,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'astrid.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
