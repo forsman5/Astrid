@@ -11,4 +11,6 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('register/', views.register, name='register'),
     path('users/<int:user_id>', views.userPage, name='userPage'),
+    path('feed/', views.feed, name ='feed'),
+    path('fed/', views.fed, name='fed')
 ]

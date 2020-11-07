@@ -9,10 +9,26 @@ from django.urls import reverse_lazy
 from django import forms
 from .forms import UserRegistrationForm
 
+from .motor import turnMotor
+
 # Create your views here.
 def index(request):
     return render(request, 'index.html', {})
+
+def feed(request):
+    if (request.user == None or not request.user.is_authenticated):
+        return HttpResponseRedirect(reverse_lazy('login'))
     
+    if request.method == 'POST':
+        turnMotor()
+        return HttpResponseRedirect(reverse_lazy('fed'))
+    else:
+        return HttpResponseRedirect(reverse_lazy('index'))
+
+def fed(request):
+    # TODO: feed history page
+    return render(request, 'fed.html', {})
+
 def register(request):
     # ensure that logged in users cannot see this page
     if request.user != None and request.user.is_authenticated:
