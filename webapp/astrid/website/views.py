@@ -10,6 +10,7 @@ from django import forms
 from .forms import UserRegistrationForm
 
 from .motor import turnMotor
+from .constants import Constants
 
 import logging
 logger = logging.getLogger(__name__)
@@ -22,9 +23,9 @@ def feed(request):
     if (request.user == None or not request.user.is_authenticated):
         logger.info("User not logged in attempted to feed")
         return HttpResponseRedirect(reverse_lazy('login'))
-    
+
     if request.method == 'POST':
-        turnMotor()
+        turnMotor(Constants.DEFAULT_MOTOR_TURN)
         return HttpResponseRedirect(reverse_lazy('fed'))
     else:
         logger.info("User sent get request to feed")
@@ -50,7 +51,7 @@ def register(request):
             username = userObj['username']
             email =  userObj['email']
             password =  userObj['password']
-            
+
             logger.info("attempting to create new user with email " + email)
 
             if not (User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists()):

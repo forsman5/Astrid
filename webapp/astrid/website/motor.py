@@ -13,4 +13,3 @@ def turnMotor(sleepTime = 1):
 
     pwm.stop()
     GPIO.cleanup()
-turnMotor(0.15)
