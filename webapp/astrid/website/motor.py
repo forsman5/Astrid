@@ -10,8 +10,7 @@ def turnMotor(sleepTime = 1):
 
     pwm.ChangeDutyCycle(5)
     sleep(sleepTime)
-    pwm.ChangeDutyCycle(10)
-    sleep(sleepTime)
 
     pwm.stop()
     GPIO.cleanup()
+turnMotor(0.15)
